@@ -1,11 +1,16 @@
 package bookshopsystemapp.domain.entities;
 
+import org.hibernate.annotations.Proxy;
+import org.springframework.context.annotation.Lazy;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Set;
+import java.util.*;
 
 @Entity(name = "books")
+
 public class Book extends BaseEntity {
 
     private String title;
@@ -58,7 +63,7 @@ public class Book extends BaseEntity {
         this.price = price;
     }
 
-    @Column(name = "copies", nullable = false)
+    @Column (name="copies")
     public Integer getCopies() {
         return copies;
     }
@@ -86,8 +91,8 @@ public class Book extends BaseEntity {
         this.ageRestriction = ageRestriction;
     }
 
-    @ManyToOne (cascade = CascadeType.MERGE)
-    @JoinColumn(name = "author_id",referencedColumnName = "id")
+    @ManyToOne (cascade = {CascadeType.MERGE,CascadeType.PERSIST})
+    @JoinColumn(name = "author_id", referencedColumnName = "id")
     public Author getAuthor() {
         return author;
     }
@@ -96,7 +101,7 @@ public class Book extends BaseEntity {
         this.author = author;
     }
 
-    @ManyToMany(targetEntity = Category.class, cascade = CascadeType.MERGE)
+    @ManyToMany(targetEntity = Category.class, cascade = {CascadeType.MERGE,CascadeType.PERSIST})
     @JoinTable(name = "books_categories",
             joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "category_id", referencedColumnName = "id"))
@@ -106,5 +111,33 @@ public class Book extends BaseEntity {
 
     public void setCategories(Set<Category> categories) {
         this.categories = categories;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", editionType=" + editionType +
+                ", price=" + price +
+                ", copies=" + copies +
+                ", releaseDate=" + releaseDate +
+                ", ageRestriction=" + ageRestriction +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return this.getId()!=null&&getId().equals(book.getId());
+
+    }
+
+    @Override
+    public int hashCode() {
+
+        return 31;
     }
 }

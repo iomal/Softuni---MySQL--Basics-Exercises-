@@ -11,8 +11,8 @@ public abstract class BaseEntity {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id" )
     public Integer getId() {
         return id;
     }

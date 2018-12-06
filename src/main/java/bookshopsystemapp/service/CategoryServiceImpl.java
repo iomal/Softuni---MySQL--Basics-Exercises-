@@ -11,7 +11,7 @@ import java.io.IOException;
 @Service
 public class CategoryServiceImpl implements CategoryService {
 
-    private final static String CATEGORIES_FILE_PATH = "G:\\1. MyStuff\\rabotni\\Softuni\\DB\\Exercises-Hibernate&Spring\\06. DB-Advanced-Spring-Data-Intro-Exercises\\SpringDataIntro-master\\SpringDataIntro-master\\src\\main\\resources\\files\\categories.txt";
+    private final static String CATEGORIES_FILE_PATH = "G:\\1. MyStuff\\rabotni\\Softuni\\DB\\Exercises-Hibernate&Spring\\06. DB-Advanced-Spring-Data-Intro-Exercises\\SpringDataIntro-master\\SpringDataIntro-master\\Softuni---MySQL--Basics-Exercises-\\src\\main\\resources\\files\\categories.txt";
 
     private final CategoryRepository categoryRepository;
     private final FileUtil fileUtil;

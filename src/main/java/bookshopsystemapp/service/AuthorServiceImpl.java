@@ -11,7 +11,7 @@ import java.io.IOException;
 @Service
 public class AuthorServiceImpl implements AuthorService {
 
-    private final static String AUTHORS_FILE_PATH = "G:\\1. MyStuff\\rabotni\\Softuni\\DB\\Exercises-Hibernate&Spring\\06. DB-Advanced-Spring-Data-Intro-Exercises\\SpringDataIntro-master\\SpringDataIntro-master\\src\\main\\resources\\files\\authors.txt";
+    private final static String AUTHORS_FILE_PATH = "G:\\1. MyStuff\\rabotni\\Softuni\\DB\\Exercises-Hibernate&Spring\\06. DB-Advanced-Spring-Data-Intro-Exercises\\SpringDataIntro-master\\SpringDataIntro-master\\Softuni---MySQL--Basics-Exercises-\\src\\main\\resources\\files\\authors.txt";
 
     private final AuthorRepository authorRepository;
     private final FileUtil fileUtil;
@@ -36,7 +36,7 @@ public class AuthorServiceImpl implements AuthorService {
             author.setFirstName(names[0]);
             author.setLastName(names[1]);
 
-            this.authorRepository.saveAndFlush(author);
+            this.authorRepository.save(author);
         }
     }
 }
